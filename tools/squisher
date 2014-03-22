@@ -3,7 +3,7 @@
 # Squish a CM otapackage for distribution
 # cyanogen
 #
-. $ANDROID_BUILD_TOP/vendor/carbon/tools/functions
+. $ANDROID_BUILD_TOP/vendor/gzokp/tools/functions
 
 OUT_TARGET_HOST=`uname -a | grep Darwin`
 if [ -z "$OUT_TARGET_HOST" ]
@@ -24,7 +24,7 @@ if [ -z "$OUT" -o ! -d "$OUT" ]; then
 	exit 1
 fi
 
-OPTICHARGER=$ANDROID_BUILD_TOP/vendor/carbon/tools/opticharger
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/gzokp/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 DELETE_LIBS="libc_malloc_debug_leak.so libc_malloc_debug_qemu.so"
@@ -120,7 +120,7 @@ rm -rf $REPACK/ota/system/etc/recovery-resource.dat
 if [ "$CARBON_CHANGELOG" = true ]
 then
 # Add changelog
-. $ANDROID_BUILD_TOP/vendor/carbon/tools/changelog
+. $ANDROID_BUILD_TOP/vendor/gzokp/tools/changelog
 else
 printf "No changelog..."
 echo

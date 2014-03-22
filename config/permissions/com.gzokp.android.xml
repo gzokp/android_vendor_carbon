@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<!-- This feature shows that this is device features NFC enhancements -->
+<!-- This feature shows that this is GZOKP based -->
 <permissions>
-    <feature name="com.carbon.nfc.enhanced" />
+    <feature name="com.gzokp.android" />
 </permissions>

@@ -1,5 +1,5 @@
 # brand
-PRODUCT_BRAND ?= Carbon
+PRODUCT_BRAND ?= GZOKP
 
 # SuperUser
 SUPERUSER_EMBEDDED := true
@@ -14,7 +14,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/carbon/prebuilt/common/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/gzokp/prebuilt/common/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -30,7 +30,7 @@ $(eval TARGET_BOOTANIMATION_NAME := $(shell \
 endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
-PRODUCT_BOOTANIMATION := vendor/carbon/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
+PRODUCT_BOOTANIMATION := vendor/gzokp/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
 endif
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
@@ -82,11 +82,11 @@ PRODUCT_PACKAGES += \
     VoicePlus \
     libemoji
 
-# carbon packages
+# gzokp packages
 PRODUCT_PACKAGES += \
     BlueBalls \
-    CarbonAbout \
-    CarbonDelta \
+    GZOKPAbout \
+    GZOKPDelta \
     ROMStats \
     Wallpapers
 
@@ -132,43 +132,43 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # themes
-include vendor/carbon/config/theme_chooser.mk
+include vendor/gzokp/config/theme_chooser.mk
 
 # korean
 $(call inherit-product-if-exists, external/naver-fonts/fonts.mk)
 
 # overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/carbon/overlay/dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/carbon/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/gzokp/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/gzokp/overlay/common
 
 # bin
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/gzokp/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # etc
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/common/etc/init.carbon.rc:root/init.carbon.rc
+    vendor/gzokp/prebuilt/common/etc/init.gzokp.rc:root/init.gzokp.rc
 
 # prebuilt
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/common/xbin/sysro:system/xbin/sysro \
-    vendor/carbon/prebuilt/common/xbin/sysrw:system/xbin/sysrw \
-    vendor/carbon/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
-    vendor/carbon/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+    vendor/gzokp/prebuilt/common/xbin/sysro:system/xbin/sysro \
+    vendor/gzokp/prebuilt/common/xbin/sysrw:system/xbin/sysrw \
+    vendor/gzokp/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    vendor/gzokp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Backup tool
-CARBON_BUILD = true
+GZOKP_BUILD = true
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/carbon/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/carbon/prebuilt/common/bin/50-carbon.sh:system/addon.d/50-carbon.sh \
-    vendor/carbon/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
-    vendor/carbon/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
-    vendor/carbon/prebuilt/common/etc/backup.conf:system/etc/backup.conf
+    vendor/gzokp/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
+    vendor/gzokp/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
+    vendor/gzokp/prebuilt/common/bin/50-gzokp.sh:system/addon.d/50-gzokp.sh \
+    vendor/gzokp/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
+    vendor/gzokp/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
+    vendor/gzokp/prebuilt/common/etc/backup.conf:system/etc/backup.conf
 
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+    vendor/gzokp/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
 
 # sip/voip
 PRODUCT_COPY_FILES += \
@@ -176,46 +176,46 @@ PRODUCT_COPY_FILES += \
 
 # nfc
 PRODUCT_COPY_FILES += \
-    vendor/carbon/config/permissions/com.carbon.android.xml:system/etc/permissions/com.carbon.android.xml \
-    vendor/carbon/config/permissions/com.carbon.nfc.enhanced.xml:system/etc/permissions/com.carbon.nfc.enhanced.xml
+    vendor/gzokp/config/permissions/com.gzokp.android.xml:system/etc/permissions/com.gzokp.android.xml \
+    vendor/gzokp/config/permissions/com.gzokp.nfc.enhanced.xml:system/etc/permissions/com.gzokp.nfc.enhanced.xml
 
 # version
 RELEASE = false
-CARBON_VERSION_MAJOR = 2
-CARBON_VERSION_MINOR = 0
+GZOKP_VERSION_MAJOR = 2
+GZOKP_VERSION_MINOR = 0
 
-# Set CARBON_BUILDTYPE
-ifdef CARBON_NIGHTLY
-    CARBON_BUILDTYPE := NIGHTLY
+# Set GZOKP_BUILDTYPE
+ifdef GZOKP_NIGHTLY
+    GZOKP_BUILDTYPE := NIGHTLY
 endif
-ifdef CARBON_EXPERIMENTAL
-    CARBON_BUILDTYPE := EXPERIMENTAL
+ifdef GZOKP_EXPERIMENTAL
+    GZOKP_BUILDTYPE := EXPERIMENTAL
 endif
-ifdef CARBON_RELEASE
-    CARBON_BUILDTYPE := RELEASE
+ifdef GZOKP_RELEASE
+    GZOKP_BUILDTYPE := RELEASE
 endif
-# Set Unofficial if no buildtype set (Buildtype should ONLY be set by Carbon Devs!)
-ifdef CARBON_BUILDTYPE
+# Set Unofficial if no buildtype set (Buildtype should ONLY be set by GZOKP Devs!)
+ifdef GZOKP_BUILDTYPE
 else
-    CARBON_BUILDTYPE := UNOFFICIAL
-    CARBON_VERSION_MAJOR :=
-    CARBON_VERSION_MINOR :=
+    GZOKP_BUILDTYPE := UNOFFICIAL
+    GZOKP_VERSION_MAJOR :=
+    GZOKP_VERSION_MINOR :=
 endif
 
-# Set Carbon version
-ifdef CARBON_RELEASE
-    CARBON_VERSION := "CARBON-KK-v"$(CARBON_VERSION_MAJOR).$(CARBON_VERSION_MINOR)
+# Set GZOKP version
+ifdef GZOKP_RELEASE
+    GZOKP_VERSION := "GZOKP-KK-v"$(GZOKP_VERSION_MAJOR).$(GZOKP_VERSION_MINOR)
 else
-    CARBON_VERSION := "CARBON-KK-$(CARBON_BUILDTYPE)"-$(shell date +%Y%m%d-%H%M)
+    GZOKP_VERSION := "GZOKP-KK-$(GZOKP_BUILDTYPE)"-$(shell date +%Y%m%d-%H%M)
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.carbon.version=$(CARBON_VERSION)
+  ro.gzokp.version=$(GZOKP_VERSION)
 
 # ROM Statistics and ROM Identification
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.romstats.askfirst=1 \
 ro.romstats.ga=UA-43747246-1 \
-ro.romstats.name=CarbonRom- \
-ro.romstats.url=http://stats.carbon-rom.com \
-ro.romstats.version=$(CARBON_VERSION)
+ro.romstats.name=GZOKP- \
+ro.romstats.url=http://stats.gzokp-rom.com \
+ro.romstats.version=$(GZOKP_VERSION)
