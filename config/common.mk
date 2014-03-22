@@ -85,8 +85,6 @@ PRODUCT_PACKAGES += \
 # gzokp packages
 PRODUCT_PACKAGES += \
     BlueBalls \
-    GZOKPAbout \
-    GZOKPDelta \
     ROMStats \
     Wallpapers
 
